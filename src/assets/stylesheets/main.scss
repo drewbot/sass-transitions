@@ -204,9 +204,14 @@
 		}
 	}
 
-	&.toasty-container:active .toasty-pop-up, .toasty-bubble {
+	&.toasty-container:active .toasty-pop-up {
 		/* visible state */
 	  	display: inline-block;
+	}
+
+	&.toasty-container:active .toasty-bubble {
+		/* visible state */
+	  	opacity: 1;
 	}
 }
 
@@ -223,7 +228,7 @@
 	bottom: 110px;
 	right: 55px;
 	/* hidden state */
-	display: none;
+	opacity: 0;
 	font-weight: 600;
 	font-style: italic;
 	color: #F28C6F;

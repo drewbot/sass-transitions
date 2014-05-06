@@ -8,24 +8,24 @@ body {
 
 .title {
 	margin: 65px 0 0 0;
-  	color: #C7C7C7;
+  	color: $grey;
   	font-size: 2em;
 }
 
 .sub-title {
 	margin: 0px 0 0 0;
-	color: #C7C7C7;
+	color: $grey;
 	font-size: 1em;
 }
 
 li {
 	margin: 65px 0 0 0;
-  	color: #C7C7C7;
+  	color: $grey;
   	font-size: 16px;
 }
 
 a {
-	color: #C7C7C7;
+	color: $grey;
 }
 
 .contain-all {
@@ -35,3 +35,40 @@ a {
 .contain-3d {
 	padding: 0 0 0 40px;
 }
+
+/* Variables */
+
+$grey: #C7C7C7;
+
+$green: #24E397;
+
+$orange: #F28C6F;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
