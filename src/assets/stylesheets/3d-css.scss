@@ -1,3 +1,5 @@
+@import "bourbon";
+
 /* Global */
 @import'global';
 
@@ -14,66 +16,40 @@ body {
 	height: 180px;
 
 	&:hover .lean-foward-box {
-		-webkit-transform: rotateX(-80deg);
+		@include transform(rotateX(-80deg));
 	}
 }
 
 .lean-foward-box {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	border-radius: 15px;
-	background-position: 50% 50%;
-	background-color: $green;
-	box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-	transition: -webkit-transform .4s ease-in;
+	@include threedbox();
 }
 
  /* Open Door */
 
 .open-door-container {
-	position: relative;
-	margin: 0 auto;
-	width: 120px;
-	height: 180px;
+	@include threedbox-container();
 
 	&:hover .open-door-box {
-		-webkit-transform: rotateY(80deg);
+		@include transform(rotatey(80deg));
 	}
 }
 
 .open-door-box {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	border-radius: 15px;
-	background-position: 50% 50%;
-	background-color: $green;
-	box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-	transition: -webkit-transform .4s ease-in;
+	@include threedbox();
 }
 
  /* Diagonal Skew - 3D */
 
 .diagonal-skew-container {
-	position: relative;
-	margin: 0 auto;
-	width: 120px;
-	height: 180px;
+	@include threedbox-container();
 
 	&:hover .diagonal-skew-box {
-		-webkit-transform: rotate3d(1,1,0,65deg);
+		@include transform(rotate3d(1,1,0,65deg));
 	}
 }
 
 .diagonal-skew-box {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	border-radius: 15px;
-	background-position: 50% 50%;
-	background-color: $green;
-	transition: -webkit-transform .5s ease-in;
+	@include threedbox();
 }
 
 /* Fan Effect */
@@ -86,7 +62,7 @@ body {
 	height: 180px;
 
 	&:hover .fan-effect-box {
-		-webkit-transform: rotateX(-80deg);
+		@include transform(rotateX(-80deg));
 	}
 }
 
@@ -97,8 +73,8 @@ body {
 	border-radius: 15px;
 	background-position: 50% 50%;
 	background-color: $green;
-	box-shadow: inset 0 0 45px rgba(255,255,255,.3), 10px 12px 20px -10px rgba(0,0,0,.4);
-	transition: -webkit-transform .1s ease;
+	box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
+	@include transition (transform (.1s ease-in));
 }
 
 .fan5 {
@@ -125,38 +101,24 @@ body {
 /* Z axis  */
 
 .z-zoom-container {
-	position: relative;
-	margin: 0 auto;
-	width: 120px;
-	height: 180px;
+	@include threedbox-container();
 
 	&:hover .z-zoom-box {
-		-webkit-transform: translateZ(100px);
+		@include ransform(translateZ(100px));
 	}
 }
 
 .z-zoom-box {
-	position: absolute;
-	margin: 50px 0 0 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 15px;
-	background-position: 50% 50%;
-	background-color: $green;
-	box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-	transition: -webkit-transform .4s ease-in;
+	@include threedbox();
 }
 
 /* Flip 3D  */
 
 .flip-3d-container {
-	position: relative;
-	margin: 0 auto;
-	width: 120px;
-	height: 180px;
-	transition: -webkit-transform .5s ease-in;
+	@include threedbox-container();
+	@include transition (transform .3s ease-in);
 	/* Carry over 3d transition to children */
-	-webkit-transform-style: preserve-3d;
+	@include transform-style(preserve-3d);
 
 	div {
 		margin: 0 auto;
@@ -165,11 +127,11 @@ body {
 		background-position: 50% 50%;
 		position: absolute;
 		box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-		-webkit-backface-visibility: hidden;
+		@include backface-visibility(hidden);
 	}
 
 	&:hover {
-		-webkit-transform: rotateY(180deg);
+		@include transform(rotateY(180deg));
 	}
 }
 
@@ -180,7 +142,7 @@ body {
 
 .flip-back {
 	background-color: $orange;
-	-webkit-transform: rotateY(180deg);
+	@include transform(rotateY(180deg));
 }
 
 /* Flip Oposite - 3D  */
@@ -190,10 +152,9 @@ body {
 	display: inline-block;
 	width: 10%;
 	height: 180px;
-	transition: -webkit-transform .4s ease-in;
-	-webkit-transform-style: preserve-3d;
-	animation-iteration-count: infinite;
-	-webkit-transform: rotateY(-1turn);
+	@include transition (transform(.4s ease-in));
+	@include transform-style(preserve-3d);
+	@include transform(rotateY(-1turn));
 
 	div {
 		position: absolute;
@@ -202,7 +163,7 @@ body {
 		height: 100%;
 		background-position: 50% 50%;
 		box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-		-webkit-backface-visibility: hidden;
+		@include backface-visibility(hidden);
 	}
 }
 
@@ -211,10 +172,9 @@ body {
 	display: inline-block;
 	width: 10%;
 	height: 180px;
-	transition: -webkit-transform .4s ease-in;
-	-webkit-transform-style: preserve-3d;
-	animation-iteration-count: infinite;
-	-webkit-transform: rotateY(-1turn);
+	@include transition (transform .4s ease-in);
+	@include transform-style(preserve-3d);
+	@include transform(rotateY(-1turn));
 
 	div {
 		position: absolute;
@@ -223,7 +183,7 @@ body {
 		height: 100%;
 		background-position: 50% 50%;
 		box-shadow: inset 0 0 45px rgba(255,255,255,.3), 0 12px 20px -10px rgba(0,0,0,.4);
-		-webkit-backface-visibility: hidden;
+		@include backface-visibility(hidden);
 	}
 }
 
@@ -234,16 +194,16 @@ body {
 
 .flip-row-back {
 	background-color: $orange;
-	-webkit-transform: rotateY(180deg);
+	@include transform(rotateY(180deg));
 }
 
 .flip-row-wrapper {
 	&:hover .flip-row-container {
-		-webkit-transform: rotateY(-1turn);
+		@include transform(rotateY(-1turn));
 	}
 
 	&:hover .flip-row-container2 {
-		-webkit-transform: rotateY(1turn);
+		@include transform(rotateY(1turn));
 	}
 }
 

@@ -1,5 +1,6 @@
 var gulp        = require('gulp'),
     gutil       = require('gulp-util'),
+    bourbon     = require('node-bourbon').includePaths,
     sass        = require('gulp-sass'),
     csso        = require('gulp-csso'),
     uglify      = require('gulp-uglify'),
@@ -19,7 +20,7 @@ gulp.task('css', function() {
   return gulp.src('src/assets/stylesheets/*.scss')
     .pipe( 
       sass( { 
-        includePaths: ['src/assets/stylesheets'],
+        includePaths: ['src/assets/stylesheets'].concat(bourbon),
         errLogToConsole: true
       } ) )
     .pipe( csso() )
@@ -49,6 +50,20 @@ gulp.task('express', function() {
   app.listen(1337);
   gutil.log('Listening on port: 1337');
 });
+
+gulp.task('html', function() {
+  return gulp.src('src/*.html')
+    .pipe( gulp.dest('dist/') )
+    .pipe( livereload( server ));
+});
+
+gulp.task('images', function() {
+  return gulp.src('src/assets/images/*')
+    .pipe( gulp.dest('dist/assets/images') )
+    .pipe( livereload( server ));
+});
+
+
  
 gulp.task('watch', function () {
   server.listen(35729, function (err) {
@@ -61,9 +76,13 @@ gulp.task('watch', function () {
     gulp.watch('src/assets/js/*.js',['js']);
  
     gulp.watch('src/*.jade',['templates']);
+
+    gulp.watch('src/*.html',['html']);
+
+    gulp.watch('src/assets/images/*',['images']);
     
   });
 });
  
 // Default Task
-gulp.task('default', ['js','css','templates','express','watch']);
+gulp.task('default', ['js','css','templates','express','watch','html','images']);
