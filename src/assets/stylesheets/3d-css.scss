@@ -104,7 +104,7 @@ body {
 	@include threedbox-container();
 
 	&:hover .z-zoom-box {
-		@include ransform(translateZ(100px));
+		@include transform(translateZ(100px));
 	}
 }
 
